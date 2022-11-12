@@ -49,6 +49,7 @@ export default {
       try {
         this.fetchAPI(path)
           .then((response) => {
+            // APIデータを返す；コンソールで確認
             console.log("initPrefectures response ===", response.data);
             this.prefectures =
               response.data &&
@@ -83,6 +84,7 @@ export default {
               response.data.result.data[0].data &&
               response.data.result.data[0].data.map((val) => val["value"]);
             this.$emit("dispSeries", id, name, population);
+            // 1-47ではなくて0-46にするため - get the result of the index
             this.prefectures[id - 1].isChecked = true;
           })
           .catch((err) => {
@@ -96,6 +98,7 @@ export default {
     /* delete the graph */
     deleteChart: function (id) {
       this.$emit("hideSeries", id);
+      // 1-47ではなくて0-46にするため - get the result of the index
       this.prefectures[id - 1].isChecked = false;
     },
 

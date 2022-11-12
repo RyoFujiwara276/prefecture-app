@@ -58,7 +58,7 @@ export default {
 
     // 非表示にする
     hide: function(id) {
-      this.options.series = this.options.series.filter(val => val.id == id);
+      this.options.series = this.options.series.filter(val => val.id !== id);
     }
   }
 };
