@@ -47,7 +47,7 @@ export default {
     };
   },
   methods: {
-
+    // 表示する
     display: function(id, name, population) {
       this.options.series.push({
         id: id,
@@ -56,8 +56,10 @@ export default {
       });
     },
 
-
-
+    // 非表示にする
+    hide: function(id) {
+      this.options.series = this.options.series.filter(val => val.id == id);
+    }
   }
 };
 </script>
