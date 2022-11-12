@@ -119,9 +119,26 @@ export default {
   max-width:640px;
   margin:0 auto;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  background:antiquewhite;
+  font-size:0.9em;
 }
 
+@media screen and (max-width:576px) {
+  .prefectures-box {
+    font-size: 0.8em;
+    background:aqua;
+  }
+
+}
+
+@media screen and (max-width:500px) {
+  .prefectures-box {
+    grid-template-columns:1fr 1fr 1fr 1fr;
+    font-size: 0.7em;
+    background:greenyellow;
+  }
+}
 
 
 </style>
