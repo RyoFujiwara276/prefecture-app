@@ -1,27 +1,41 @@
 <template>
   <div id="app">
-    {{ this.prefectures }}
+    <div class="main-contents">
+      <h1>都道府県別グラフ</h1>
+    <div class="prefectures-wrapper">
+      <h2>都道府県</h2>
+      <Prefectures onAddSeries="addSeries" onRemoveSeries="removeSeries" />
+    </div>
+    <Highcharts :options="options" />
+    </div>
   </div>
 </template>
+
 <script>
-import axios from "axios";
+import {Chart} from "highcharts-vue";
+import Prefectures from "./Prefectures.vue";
 
 export default {
-  data() {
-    return {
-      prefectures: null,
-    };
-  },
-  methods: {
-    getPrefData() {
-      var prefectures_url =
-      "https://opendata.resas-portal.go.jp/api/v1/prefectures";
-    axios
-      .get(prefectures_url, {
-        headers: { "X-API-KEY": "8OSsW1I7j1SPrT1Ne3zZmLpXfPd6cPjRtGA3WuHM" },
-      })
-      .then((response) => (this.prefectures = response.data.result));
-    }
+  components: {
+    Highcharts: Chart,
+    Prefectures: Prefectures
   }
 };
 </script>
+<style scoped>
+#app {
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.main-contents {
+  width:100%;
+  max-width: 992px;
+  margin:0 auto;
+}
+.prefectures-wrapper {
+  padding:5px 10px 20px;
+  margin:4vh auto;
+}
+
+</style>
