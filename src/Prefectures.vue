@@ -35,6 +35,7 @@ export default {
     fetchAPI: function (path) {
       const response = axios.get(`${process.env.VUE_APP_BASE_URL}/${path}`, {
         headers: {
+          // Check with POSTMAN
           "X-API-KEY": process.env.VUE_APP_PREFECTURE_ACCESS_TOKEN,
           "Content-Type": "application/json;charset=UTF-8",
         },
@@ -81,7 +82,7 @@ export default {
               response.data.result.data[0] &&
               response.data.result.data[0].data &&
               response.data.result.data[0].data.map((val) => val["value"]);
-            this.$emit("onAddSeries", id, name, population);
+            this.$emit("dispSeries", id, name, population);
             this.prefectures[id - 1].isChecked = true;
           })
           .catch((err) => {
@@ -94,7 +95,7 @@ export default {
 
     /* delete the graph */
     deleteChart: function (id) {
-      this.$emit("onRemoveSeries", id);
+      this.$emit("hideSeries", id);
       this.prefectures[id - 1].isChecked = false;
     },
 
@@ -118,8 +119,6 @@ export default {
   grid-template-columns: 1fr 1fr 1fr;
 }
 
-label {
-  cursor: pointer;
-}
+
 
 </style>

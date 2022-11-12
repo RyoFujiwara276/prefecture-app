@@ -4,7 +4,7 @@
       <h1>都道府県別グラフ</h1>
     <div class="prefectures-wrapper">
       <h2>都道府県</h2>
-      <Prefectures onAddSeries="addSeries" onRemoveSeries="removeSeries" />
+      <Prefectures v-on:dispSeries="display" v-on:hideSeries="hide" />
     </div>
     <Highcharts :options="options" />
     </div>
@@ -19,6 +19,45 @@ export default {
   components: {
     Highcharts: Chart,
     Prefectures: Prefectures
+  },
+  data() {
+    return {
+      /* high charts property */
+      options: {
+        // return series
+        series: [],
+        // optional items on the graph
+        title: {
+          text: "結果"
+        },
+        legend: {
+          layout: "vertical"
+        },
+        xAxis: {
+          title: {
+            text: "Year (年度)"
+          }
+        },
+        yAxis: {
+          title: {
+            text: "Population (人口)"
+          }
+        }
+      }
+    };
+  },
+  methods: {
+
+    display: function(id, name, population) {
+      this.options.series.push({
+        id: id,
+        name: name,
+        data: population
+      });
+    },
+
+
+
   }
 };
 </script>
