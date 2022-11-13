@@ -1,9 +1,9 @@
 <template>
   <div id="app">
     <div class="main-contents">
-      <h1>都道府県別グラフ</h1>
+      <h1>都道府県別人口グラフ</h1>
     <div class="prefectures-wrapper">
-      <h2>都道府県</h2>
+
       <Prefectures v-on:dispSeries="display" v-on:hideSeries="hide" />
     </div>
     <Highcharts :options="options" />
@@ -31,7 +31,7 @@ export default {
           text: "結果"
         },
         legend: {
-          layout: "vertical"
+          layout: "horizontal"
         },
         xAxis: {
           title: {
@@ -73,6 +73,12 @@ export default {
   width:100%;
   max-width: 992px;
   margin:0 auto;
+}
+
+.main-contents h1 {
+  font-size: 1.5em;
+  text-align: center;
+  text-decoration: underline;
 }
 .prefectures-wrapper {
   padding:5px 10px 20px;

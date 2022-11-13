@@ -1,5 +1,7 @@
 <template>
-  <div class="prefectures-box">
+  <div class="wrapper">
+    <h2>都道府県一覧</h2>
+    <div class="prefectures-box">
     <div
       v-for="prefecture in prefectures"
       :key="prefecture.id"
@@ -15,6 +17,7 @@
         {{ prefecture.name }}
       </label>
     </div>
+  </div>
   </div>
 </template>
 
@@ -114,14 +117,22 @@ export default {
 };
 </script>
 <style scoped>
-.prefectures-box {
+
+.wrapper {
+  background:antiquewhite;
+  padding:2vh 0;
   width:90%;
   max-width:640px;
   margin:0 auto;
-  /* display: grid; */
-  /* grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr; */
-  background:antiquewhite;
-  padding:10px;
+}
+
+.wrapper h2 {
+  font-size: 20px;
+  text-align: center;
+  margin:0;
+}
+.prefectures-box {
+  padding:10px 0;
   font-size:0.9em;
   display:flex;
   flex-wrap: wrap;
@@ -133,9 +144,13 @@ export default {
 }
 
 @media screen and (max-width:576px) {
+
+  .wrapper {
+    width:100%;
+    max-width: 540px;
+  }
   .prefectures-box {
     font-size: 0.8em;
-    max-width: 540px;
   }
 
   .prefectures-box .prefecture {
