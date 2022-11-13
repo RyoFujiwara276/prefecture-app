@@ -10,7 +10,7 @@
           type="checkbox"
           :id="prefecture.id"
           :checked="prefecture.isChecked"
-          @click="toggleChart(prefecture.id, prefecture.name, prefecture.isChecked)"
+          v-on:click="toggleChart(prefecture.id, prefecture.name, prefecture.isChecked)"
         />
         {{ prefecture.name }}
       </label>
@@ -115,28 +115,42 @@ export default {
 </script>
 <style scoped>
 .prefectures-box {
-  width:100%;
+  width:90%;
   max-width:640px;
   margin:0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  /* display: grid; */
+  /* grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr; */
   background:antiquewhite;
+  padding:10px;
   font-size:0.9em;
+  display:flex;
+  flex-wrap: wrap;
+}
+
+.prefectures-box .prefecture {
+  width:calc(100%/6);
+  margin-bottom: 10px;
 }
 
 @media screen and (max-width:576px) {
   .prefectures-box {
     font-size: 0.8em;
-    background:aqua;
+    max-width: 540px;
+  }
+
+  .prefectures-box .prefecture {
+    width:20%;
   }
 
 }
 
 @media screen and (max-width:500px) {
   .prefectures-box {
-    grid-template-columns:1fr 1fr 1fr 1fr;
     font-size: 0.7em;
-    background:greenyellow;
+  }
+
+  .prefectures-box .prefecture {
+    width:25%;
   }
 }
 
